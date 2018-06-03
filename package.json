@@ -1,5 +1,5 @@
 {
-  "name": "test-portlet",
+  "name": "vue-portlet",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
