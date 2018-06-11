@@ -1,5 +1,0 @@
-version: '2'
-services:
-  vue-portlet:
-    build: ..
-    image: eu.gcr.io/pgmtc-net/vue-portlet
