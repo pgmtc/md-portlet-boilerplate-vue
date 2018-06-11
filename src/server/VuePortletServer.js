@@ -3,12 +3,17 @@ import log from './logger'
 
 export default class TestPortletServer extends MdPortletServer {
   constructor(portletLocation) {
-    super('testPortlet', portletLocation)
+    super('vuePortlet', portletLocation)
     this.expose(::this.doSomeWork);
     this.exposeJob(::this.doSomeWorkAsync)
     this.expose(::this.suicide);
+    this.exposeGet('/work', this.workHandler)
   }
 
+  workHandler(req, res, next) {
+    log.info('Doing some work via get')
+    res.send('Done')
+  }
   /* Example of sync call - see TestPortlet for how to call it */
   doSomeWork(param1, param2) {
     log.debug(`Doing some work ... ${param1}, ${param2}`);

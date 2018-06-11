@@ -1,4 +1,2 @@
-import TestPortlet from './TestPortlet'
-export {
-  TestPortlet
-}
+import TestPortlet from './TestPortlet.vue'
+export default TestPortlet

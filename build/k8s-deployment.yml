@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: test-portlet
+  name: vue-portlet
   namespace: dev
 spec:
   selector:
-    app: test-portlet
+    app: vue-portlet
   ports:
   - protocol: TCP
     port: 8080
@@ -15,21 +15,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-portlet
+  name: vue-portlet
   namespace: dev
 spec:
   selector:
     matchLabels:
-      app: test-portlet
-  replicas: 1
+      app: vue-portlet
+  replicas: 2
   template:
     metadata:
       labels:
-        app: test-portlet
+        app: vue-portlet
     spec:
       containers:
-      - name: test-portlet
-        image: eu.gcr.io/pgmtc-net/test-portlet
+      - name: vue-portlet
+        image: eu.gcr.io/pgmtc-net/vue-portlet
         ports:
         - containerPort: 8080
         env:
