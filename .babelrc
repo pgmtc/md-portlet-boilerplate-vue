@@ -9,8 +9,10 @@
   ],
   "plugins": [[
     "transform-runtime", {
+      "helpers": false,
       "polyfill": false,
-      "regenerator": true
+      "regenerator": true,
+      "moduleName": "babel-runtime"
     }]
     , "transform-function-bind"]
 }

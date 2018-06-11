@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h5>Test 1</h5>
     <button @click="callHttp">Call HTTP</button>
     <button @click="callApi">Call API</button>
     <button @click="callJob">Call Job</button>
     <button @click="callBroadcast">Broadcast</button>
     <div>
-      {{response}}
+      <div v-for="message in messages">
+        {{message}}
+      </div>
     </div>
   </div>
 </template>
@@ -15,16 +16,14 @@
   export default {
     name: 'test-vue-portlet',
     mounted () {
-      console.log(this.$ctx)
       this.$ctx.socket.on('broadcastResponse', (msg) => {
         let from = msg.context.auth.email
-        this.response = `from ${from}: ${msg.message}`
+        this.addMessage(`from ${from}: ${msg.message}`)
       });
     },
     data () {
       return {
-        cnt: 0,
-        response: null
+        messages: []
       }
     },
     computed: {
@@ -32,27 +31,33 @@
     },
 
     methods: {
-      callHttp () {
-        this.cnt++
-        this.$ctx.httpGet('/api/work').then((data) => {
-          this.response = data;
-        })
+      // Adds message to the list which is then shown
+      addMessage(message) {
+        this.messages.unshift(message)
       },
-      callApi () {
-        this.cnt++
-        this.$ctx.apiCall('doSomeWork', [123, 'abc']).then((data) => {
-          this.response = data
-        })
+
+      // Example of how to call a HTTP get request which ends with the server
+      async callHttp () {
+        let data = await this.$ctx.httpGet('/api/work')
+        this.addMessage(data)
       },
-      callJob () {
-        this.cnt++
-        this.$ctx.apiJob('doSomeWorkAsync', [123, 'abc'], this.jobMessageHandler).then((data) => {
-          this.response = data
-        })
+
+      // Example of how to use messaging API to call a method
+      async callApi () {
+        let data = await this.$ctx.apiCall('doSomeWork', [123, 'abc'])
+        this.addMessage(data)
+      },
+
+      // Example of how to call long running job using API
+      async callJob () {
+        let data = await this.$ctx.apiJob('doSomeWorkAsync', [123, 'abc'], this.jobMessageHandler)
+        this.addMessage(data)
       },
       jobMessageHandler(msg) {
-        this.response = msg
+        this.addMessage(msg)
       },
+
+      // Example how to broadcast a message to all clients
       callBroadcast () {
         this.$ctx.broadcast('broadcastResponse','Hey there')
       }

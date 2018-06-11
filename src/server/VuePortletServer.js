@@ -15,14 +15,16 @@ export default class TestPortletServer extends MdPortletServer {
     res.send('Done')
   }
   /* Example of sync call - see TestPortlet for how to call it */
-  doSomeWork(param1, param2) {
-    log.debug(`Doing some work ... ${param1}, ${param2}`);
+  doSomeWork(context, param1, param2) {
+    let userName = context.auth.displayName
+    log.debug(`Doing some work for ${userName} ... ${param1}, ${param2}`);
     return `Join: ${param1}:${param2} - ${new Date()}`;
   }
 
   /* Example of async call - see TestPortlet for how to call it */
-  async doSomeWorkAsync(job, param1, param2) {
-    log.debug(`Doing some work ... ${param1}, ${param2}; ${new Date()}`);
+  async doSomeWorkAsync(job, context, param1, param2) {
+    let userName = context.auth.displayName
+    log.debug(`Doing some work for ${userName} ... ${param1}, ${param2}; ${new Date()}`);
     for (let j = 1; j <= 10; j++) {
       job.progress('some progress ' + j)
       await sleep(100)
