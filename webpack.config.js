@@ -18,7 +18,10 @@ module.exports = {
       // use babel-loader for js files
       { test: /\.js$/, use: 'babel-loader' },
       // use vue-loader for .vue files
-      { test: /\.vue$/, use: 'vue-loader' }
+      { test: /\.vue$/, use: 'vue-loader' },
+      // style loader
+      { test: /\.less$/, use: ['style-loader', 'style-loader', 'css-loader', 'less-loader']},
+      { test: /\.css$/, use: ['style-loader', 'style-loader', 'css-loader']}
     ]
   },
   plugins: [

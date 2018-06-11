@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="test-portlet">
     <button @click="callHttp">Call HTTP</button>
     <button @click="callApi">Call API</button>
     <button @click="callJob">Call Job</button>
@@ -67,6 +67,8 @@
 
 </script>
 
-<style scoped>
+<style scoped lang="less">
+  .test-portlet {
 
+  }
 </style>
