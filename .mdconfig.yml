@@ -1,0 +1,28 @@
+disableAuth: true
+disableNats: false
+disableProxy: false
+port: 10000
+webClientPort: 10001
+authClient: DO-NOT-SAVE-CLIENT
+authSecret: DO-NOT-SAVE-SECRET
+authCallbackUrl: 'http://localhost:10000/auth/google'
+proxies:
+  vuePortlet: 'http://localhost:8080/'
+sources:
+  - 'http://localhost:8080/'
+portlets:
+  vuePortlet:
+    id: vuePortlet
+    type: vue
+    name: 'VUE Portet'
+    class: vuePortlet
+    grpc:
+      endPoint: 'localhost:50051'
+      protoLocation: 'http://localhost:8080/grpc'
+layout:
+  -
+    i: vuePortlet
+    x: 0
+    y: 0
+    w: 2
+    h: 2

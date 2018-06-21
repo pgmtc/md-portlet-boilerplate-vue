@@ -6,14 +6,17 @@
   "repository": "https://github.com/pgmtc/md-portlet-boilerplate-docker",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch",
     "start": "babel-node src/server/server.js --presets env",
-    "dev": "nodemon src/server/server.js --exec babel-node --presets env",
-    "standard": "standard"
+    "standard": "standard",
+    "standardfix": "standard --fix",
+    "watch-server": "nodemon src/server/server.js --exec babel-node --presets env",
+    "watch-client": "webpack --watch",
+    "dev": "npm run watch-client & npm run watch-server & md server start"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@pgmtc/md-cli": "0.0.6",
     "cross-env": "^5.1.6",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
