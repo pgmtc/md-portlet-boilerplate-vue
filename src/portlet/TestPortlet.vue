@@ -4,6 +4,7 @@
     <button @click="callApi">Call API</button>
     <button @click="callJob">Call Job</button>
     <button @click="callBroadcast">Broadcast</button>
+    <button @click="callGrpc">GRCP</button>
     <div>
       <div v-for="message in messages">
         {{message}}
@@ -60,6 +61,12 @@
       // Example how to broadcast a message to all clients
       callBroadcast () {
         this.$ctx.broadcast('broadcastResponse','Hey there')
+      },
+
+      // Example of GRPC call
+      async callGrpc () {
+        let results = await this.$ctx.grpc('grpcTest', { message: 'Some message' })
+        this.addMessage(results)
       }
     },
     props: ['$ctx']

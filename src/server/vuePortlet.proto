@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+option objc_class_prefix = "HLW";
+
+package helloworld;
+
+// The greeting service definition.
+service VuePortletService {
+  // Sends a greeting
+  rpc grpcTest (TestRequest) returns (TestReply) {}
+}
+
+// The request message containing the user's name.
+message TestRequest {
+  string name = 1;
+  string _userId = 2;
+  string _userEmail = 3;
+}
+
+// The response message containing the greetings
+message TestReply {
+  string message = 1;
+}

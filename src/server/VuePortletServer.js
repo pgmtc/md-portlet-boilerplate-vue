@@ -1,13 +1,14 @@
-import MdPortletServer from 'md-lib/server/MdPortletServer'
+import MdPortletServer from '@pgmtc/md-lib/server/MdPortletServer'
 import log from './logger'
 
 export default class TestPortletServer extends MdPortletServer {
-  constructor(portletLocation) {
-    super('vuePortlet', portletLocation)
+  constructor(portletLocation, grcpProtoLocation) {
+    super('vuePortlet', portletLocation, grcpProtoLocation)
     this.expose(::this.doSomeWork);
     this.exposeJob(::this.doSomeWorkAsync)
     this.expose(::this.suicide);
     this.exposeGet('/work', this.workHandler)
+    this.exposeGrpc(::this.grpcTest)
   }
 
   workHandler(req, res, next) {
@@ -34,6 +35,13 @@ export default class TestPortletServer extends MdPortletServer {
       }
     }
     job.done('job done');
+  }
+
+  grpcTest (request) {
+    console.log(request)
+    return {
+      message: `To: ${request._userEmail} from:vuePortlet on:${new Date()}, name:${request.name}`
+    }
   }
 
   suicide() {
