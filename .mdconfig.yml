@@ -1,28 +1,36 @@
-disableAuth: true
-disableNats: false
-disableProxy: false
-port: 10000
-webClientPort: 10001
-authClient: DO-NOT-SAVE-CLIENT
-authSecret: DO-NOT-SAVE-SECRET
-authCallbackUrl: 'http://localhost:10000/auth/google'
-proxies:
+DISABLE_NATS: false
+DISABLE_PROXY: false
+DISABLE_AUTH: true
+DISABLE_SOCKETS: false
+DISABLE_STORAGE: true
+DISABLE_GRPC: false
+WEB_CLIENT_PORT: 10001
+MSGHUB_SERVER: 'nats://localhost:4222'
+MSGHUB_ID: mdesktop
+MSGHUB_CLIENT: mdesktop
+SESSION_SECRET: secret1
+PORT: 10000
+GOOGLE_CLIENT_ID: do-not-store
+GOOGLE_CLIENT_SECRET: do-not-store
+AUTH_CALLBACK_URL: 'http://localhost:10000/auth/google'
+MONGODB_URL: 'mongodb+srv://your-mongodb-server'
+PROXIES:
   vuePortlet: 'http://localhost:8080/'
-sources:
+SOURCES:
   - 'http://localhost:8080/'
-portlets:
+PORTLETS:
   vuePortlet:
     id: vuePortlet
     type: vue
-    name: 'VUE Portet'
+    name: 'Portlet 1'
     class: vuePortlet
     grpc:
       endPoint: 'localhost:50051'
       protoLocation: 'http://localhost:8080/grpc'
-layout:
+LAYOUT:
   -
     i: vuePortlet
     x: 0
     y: 0
-    w: 4
-    h: 4
+    w: 2
+    h: 2

@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@pgmtc/md-cli": "0.0.6",
+    "@pgmtc/md-cli": "^1.2.1",
     "cross-env": "^5.1.6",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
@@ -34,7 +34,8 @@
     "webpack-cli": "^2.1.4"
   },
   "dependencies": {
-    "@pgmtc/md-lib": "0.0.1",
+    "@grpc/proto-loader": "^0.1.0",
+    "@pgmtc/md-lib": "^1.2.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
@@ -43,6 +44,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "express": "^4.16.3",
+    "google-protobuf": "^3.6.0",
+    "grpc": "^1.12.4",
     "ip": "^1.1.5",
     "nats": "^0.8.10",
     "uuid": "^3.2.1",

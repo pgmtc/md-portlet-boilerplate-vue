@@ -2,8 +2,8 @@ import MdPortletServer from '@pgmtc/md-lib/server/MdPortletServer'
 import log from './logger'
 
 export default class TestPortletServer extends MdPortletServer {
-  constructor(portletLocation, grcpProtoLocation) {
-    super('vuePortlet', portletLocation, grcpProtoLocation)
+  constructor(config) {
+    super(config)
     this.expose(::this.doSomeWork);
     this.exposeJob(::this.doSomeWorkAsync)
     this.expose(::this.suicide);
