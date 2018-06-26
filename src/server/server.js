@@ -7,7 +7,7 @@ const server = new VuePortletServer({
   grpcDefLocation: './vuePortlet.proto',
   msgHubServer: process.env.MSGHUB_SERVER || 'nats://localhost:4222',
   msgHubId: process.env.MSGHUB_ID || 'mdesktop',
-  enableNats: false,
+  enableNats: true,
   enableHttp: true,
   enableGrpc: true
 })

@@ -65,7 +65,9 @@
 
       // Example of GRPC call
       async callGrpc () {
-        let results = await this.$ctx.grpc('grpcTest', { message: 'Some message' })
+        let results = await this.$ctx.grpc('grpcTest', {
+          name: 'Some parameter'
+        })
         this.addMessage(results)
       }
     },
